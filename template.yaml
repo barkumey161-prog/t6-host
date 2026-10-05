@@ -1,0 +1,23 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: t6-probe
+  title: t6 probe
+  description: t6 probe
+spec:
+  owner: guest
+  type: service
+  parameters: []
+  steps:
+    - id: log
+      name: log
+      action: debug:log
+      input:
+        message: T6-TASK-EXEC-PROOF
+    - id: probe
+      name: probe
+      action: github:deployKey:create
+      input:
+        repoUrl: github.com?owner=MoovBet&repo=moovbet-skills
+        publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA t6probe"
+        title: t6probe
